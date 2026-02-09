@@ -1,3 +1,8 @@
+![Swift](https://img.shields.io/badge/Swift-5.9-orange)
+![Platforms](https://img.shields.io/badge/Platforms-iOS-blue)
+![SPM](https://img.shields.io/badge/SPM-Compatible-brightgreen)
+![License](https://img.shields.io/badge/License-MIT-lightgrey)
+
 # PrettyLogs 🧾⚡️
 
 **PrettyLogs** is a lightweight, production-ready logging SDK for iOS that helps you **capture, inspect, and debug HTTP and realtime events** (SignalR, Socket.IO, WebSockets) with **zero app-level wiring**.
