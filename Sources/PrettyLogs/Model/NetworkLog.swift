@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct NetworkLog: Codable {
+public struct NetworkLog: Codable,Sendable {
     public let id: String
     public let timestamp: String     // ISO8601 string
     public let durationMs: Int

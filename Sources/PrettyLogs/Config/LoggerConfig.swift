@@ -102,30 +102,29 @@ public struct LoggerConfig: Sendable {
 // MARK: - Filtering helper
 
 extension LoggerConfig {
+
     func shouldLog(request: URLRequest) -> Bool {
         guard mode == .enabled else { return false }
         guard let url = request.url else { return false }
 
-        // 🚫 Never log our own ingestion transport
-        if let ingestionURL {
-            if url.host == ingestionURL.host &&
-               url.path.hasPrefix(ingestionURL.path) {
-                return false
-            }
+        // 🚫 Block ingestion endpoints to prevent recursion
+        if let ingestionURL,
+           url.host == ingestionURL.host,
+           (url.path == "/v1/logs" || url.path == "/v1/realtime-logs") {
+            return false
         }
 
-        // 🚫 Deny list ALWAYS wins
+        // 🚫 Deny list
         if denyList.contains(where: { $0.matches(url: url) }) {
             return false
         }
 
-        // ✅ Allow list (if provided)
+        // ✅ Allow list
         if !allowList.isEmpty {
             return allowList.contains(where: { $0.matches(url: url) })
         }
 
         return true
     }
-
 }
 

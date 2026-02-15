@@ -12,24 +12,26 @@ public enum PrettyLogs {
         environment: String
     ) {
         Task { @MainActor in
+
             let metadata = DefaultLoggerMetadata.make(environment: environment)
 
             let config = LoggerConfig(
                 mode: mode,
                 loggeerType: loggerType,
-                ingestionURL: PrettyLogsEndpoints.httpLink,
-                realtimeEndpoint: PrettyLogsEndpoints.realtime,
+                ingestionURL: PrettyLogsEndpoints.base,
+                realtimeEndpoint: PrettyLogsEndpoints.base,
                 apiKey: apiKey
             )
 
             let sink: LogSink
-            if loggerType == .realtime {
+
+            if mode == .disabled || loggerType == .none {
+                sink = ConsoleLogSink()
+            } else {
                 sink = HTTPLogSink(
-                    endpoint: PrettyLogsEndpoints.realtime,
+                    baseURL: PrettyLogsEndpoints.base,
                     apiKey: apiKey
                 )
-            } else {
-                sink = ConsoleLogSink()
             }
 
             LoggerState.shared.configure(
@@ -37,6 +39,11 @@ public enum PrettyLogs {
                 sink: sink,
                 metadata: metadata
             )
+
+            // ✅ Enable automatic URLSession interception
+            URLProtocol.registerClass(LoggingURLProtocol.self)
+
+            print("✅ PrettyLogs started successfully")
         }
     }
 }
