@@ -65,7 +65,7 @@ PrettyLogs.start(
 
 ```swift
 .package(
- url: "https://github.com/your-org/PrettyLogs",
+ url: "https://github.com/MostafaIOS2p/PrettyLogs",
  from: "1.0.0"
 )
 ```
