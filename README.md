@@ -57,7 +57,7 @@ PrettyLogs.start(
 2. Go to **File → Add Packages**
 3. Enter the repository URL:
    ```swift
-    https://github.com/your-org/PrettyLogs
+    https://github.com/MostafaIOS2p/PrettyLogs
    ```
 4. Select the latest version and add the package to your project
 
