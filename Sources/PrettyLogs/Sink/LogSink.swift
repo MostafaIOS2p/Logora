@@ -23,7 +23,6 @@ public final class ConsoleLogSink: LogSink {
         print("📡 [NetworkLog]")
         print("➡️ \(log.method) \(log.url)")
         print("⏱ duration: \(log.durationMs) ms")
-        print("🆔 correlationId: \(log.id)")
         print("📥 status: \(log.statusCode.map(String.init) ?? "nil")")
 
         if let headers = log.requestHeaders, !headers.isEmpty {

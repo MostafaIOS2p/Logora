@@ -13,7 +13,6 @@ enum NetworkLogBuilder {
     static func build(from tracker: NetworkLogTracker, config: LoggerConfig) -> NetworkLog {
 
         let durationMs = Int(Date().timeIntervalSince(tracker.start) * 1000.0)
-        let iso = ISO8601DateFormatter().string(from: tracker.start)
 
         let method = tracker.request.httpMethod ?? "UNKNOWN"
         let url = tracker.request.url?.absoluteString ?? "UNKNOWN_URL"
@@ -52,8 +51,6 @@ enum NetworkLogBuilder {
         let err = tracker.error.map { String(describing: $0) }
 
         return NetworkLog(
-            id: tracker.id,
-            timestamp: iso,
             durationMs: durationMs,
             method: method,
             url: url,

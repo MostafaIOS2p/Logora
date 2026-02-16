@@ -29,8 +29,6 @@ final class RealtimeLogger {
         guard config.realtimeEndpoint != nil else { return }
 
         let log = RealtimeLog(
-            id: UUID(),
-            timestamp: ISO8601DateFormatter().string(from: Date()),
             transport: transport,
             direction: direction,
             event: event,

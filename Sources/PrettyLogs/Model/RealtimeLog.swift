@@ -23,8 +23,6 @@ public struct RealtimeLog: Codable, Sendable {
         case `internal`
     }
 
-    public let id: UUID
-    public let timestamp: String
     public let transport: Transport
     public let direction: Direction
     public let event: String
@@ -38,8 +36,6 @@ public struct RealtimeLog: Codable, Sendable {
     public let build: String?
 
     public init(
-        id: UUID,
-        timestamp: String,
         transport: Transport,
         direction: Direction,
         event: String,
@@ -50,8 +46,6 @@ public struct RealtimeLog: Codable, Sendable {
         device: String?,
         build: String?
     ) {
-        self.id = id
-        self.timestamp = timestamp
         self.transport = transport
         self.direction = direction
         self.event = event

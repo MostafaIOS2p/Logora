@@ -41,11 +41,8 @@ final class LoggingURLProtocol: URLProtocol, @unchecked Sendable {
         )
 
         // Inject correlation id
-        let correlationId = UUID().uuidString
-        mutableRequest.setValue(correlationId, forHTTPHeaderField: "X-Correlation-ID")
-
         let newRequest = mutableRequest as URLRequest
-        let tracker = NetworkLogTracker(request: newRequest, id: correlationId)
+        let tracker = NetworkLogTracker(request: newRequest)
         self.tracker = tracker
 
         let cfg = URLSessionConfiguration.default

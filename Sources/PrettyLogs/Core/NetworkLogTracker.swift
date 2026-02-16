@@ -9,7 +9,6 @@
 import Foundation
 
 final class NetworkLogTracker {
-    let id: String
     let start: Date
     let request: URLRequest
 
@@ -17,9 +16,8 @@ final class NetworkLogTracker {
     var responseData: Data?
     var error: Error?
 
-    init(request: URLRequest, id: String, start: Date = Date()) {
+    init(request: URLRequest, start: Date = Date()) {
         self.request = request
-        self.id = id
         self.start = start
     }
 }
