@@ -3,9 +3,9 @@
 ![SPM](https://img.shields.io/badge/SPM-Compatible-brightgreen)
 ![License](https://img.shields.io/badge/License-MIT-lightgrey)
 
-# PrettyLogs 🧾⚡️
+# Logora 🧾⚡️
 
-**PrettyLogs** is a lightweight, production-ready logging SDK for iOS that helps you **capture, inspect, and debug HTTP and realtime events** (SignalR, Socket.IO, WebSockets) with **zero app-level wiring**.
+**Logora** is a lightweight, production-ready logging SDK for iOS that helps you **capture, inspect, and debug HTTP and realtime events** (SignalR, Socket.IO, WebSockets) with **zero app-level wiring**.
 
 Designed for:
 - iOS developers
@@ -29,9 +29,9 @@ Designed for:
 ## 🚀 Quick Start
 
 ```swift
-import PrettyLogs
+import Logora
 
-PrettyLogs.start(
+Logora.start(
     apiKey: "YOUR_API_KEY",
     environment: "debug"
 )
@@ -40,7 +40,7 @@ PrettyLogs.start(
 
 - You can override the default logger type:
  ```swift
-PrettyLogs.start(
+Logora.start(
     apiKey: "YOUR_API_KEY",
     environment: "production",
     loggerType: .realtime
@@ -74,7 +74,7 @@ PrettyLogs.start(
 1️⃣ HTTP Logging (Automatic)
 
 Nothing to implement.
-Once PrettyLogs.start() is called, all URLSession requests are logged automatically.
+Once Logora.start() is called, all URLSession requests are logged automatically.
 ```swift
 URLSession.shared.dataTask(with: request).resume()
 ```
@@ -82,7 +82,7 @@ URLSession.shared.dataTask(with: request).resume()
 2️⃣ Realtime Logging (SignalR / WebSockets)
 Use this inside your realtime layer (SignalR service, socket manager, etc).
  ```swift
-PrettyLogs.realtime.log(
+Logora.realtime.log(
     transport: .signalR,
     direction: .outgoing,
     event: "SendMessage",
@@ -95,7 +95,7 @@ PrettyLogs.realtime.log(
 ```
 Incoming event example
 ``` swift
-PrettyLogs.realtime.log(
+Logora.realtime.log(
     transport: .signalR,
     direction: .incoming,
     event: "ReceiveMessage",
