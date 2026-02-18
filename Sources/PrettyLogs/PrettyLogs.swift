@@ -11,6 +11,12 @@ public enum PrettyLogs {
         loggerType: LoggerConfig.LoggeerType = .http,
         environment: String
     ) {
+
+        Task {
+               await PrettyLogsSwizzler.shared.enableURLProtocolInjection()
+           }
+        // ✅ Enable automatic URLSession interception
+        URLProtocol.registerClass(LoggingURLProtocol.self)
         Task { @MainActor in
 
             let metadata = DefaultLoggerMetadata.make(environment: environment)
@@ -39,10 +45,6 @@ public enum PrettyLogs {
                 sink: sink,
                 metadata: metadata
             )
-
-            // ✅ Enable automatic URLSession interception
-            URLProtocol.registerClass(LoggingURLProtocol.self)
-
             print("✅ PrettyLogs started successfully")
         }
     }
