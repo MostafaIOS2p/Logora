@@ -76,7 +76,12 @@ Logora.start(
 Nothing to implement.
 Once Logora.start() is called, all URLSession requests are logged automatically.
 ```swift
-URLSession.shared.dataTask(with: request).resume()
+PrettyLogs.start(
+      mode: .enabled,
+      apiKey: "app-token",
+      loggerType:.http,
+      environment: "environment"
+    )
 ```
 
 2️⃣ Realtime Logging (SignalR / WebSockets)
