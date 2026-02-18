@@ -57,7 +57,7 @@ Logora.start(
 2. Go to **File → Add Packages**
 3. Enter the repository URL:
    ```swift
-    https://github.com/MostafaIOS2p/PrettyLogs
+    https://github.com/MostafaIOS2p/Logora
    ```
 4. Select the latest version and add the package to your project
 
@@ -65,7 +65,7 @@ Logora.start(
 
 ```swift
 .package(
- url: "https://github.com/MostafaIOS2p/PrettyLogs",
+ url: "https://github.com/MostafaIOS2p/Logora",
  from: "1.0.0"
 )
 ```
