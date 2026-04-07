@@ -24,7 +24,7 @@ public final class HTTPLogSink: LogSink {
     }
 
     private func sendNetwork(_ logs: [NetworkLog]) {
-        let url = baseURL.appendingPathComponent("v1/logs")
+        let url = baseURL.appendingPathComponent("/logs")
         post(logs, to: url)
     }
 

@@ -8,5 +8,5 @@
 import Foundation
 
 enum LogoraEndpoints {
-    static let base = URL(string: "https://prettylogs-backend-production.up.railway.app")!
+    static let base = URL(string: "http://10.105.211.26:7055")!
 }
