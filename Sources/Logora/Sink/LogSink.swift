@@ -24,21 +24,21 @@ public final class ConsoleLogSink: LogSink {
         print("➡️ \(log.method) \(log.url)")
         print("⏱ duration: \(log.durationMs) ms")
         print("📥 status: \(log.statusCode.map(String.init) ?? "nil")")
-
-        if let headers = log.requestHeaders, !headers.isEmpty {
-            print("📤 Request Headers:")
-            headers.forEach { print("   \($0): \($1)") }
-        }
+//
+//        if let headers = log.requestHeaders, !headers.isEmpty {
+//            print("📤 Request Headers:")
+//            headers.forEach { print("   \($0): \($1)") }
+//        }
 
         if let body = log.requestBody {
             print("📤 Request Body:")
             print(body)
         }
 
-        if let headers = log.responseHeaders, !headers.isEmpty {
-            print("📥 Response Headers:")
-            headers.forEach { print("   \($0): \($1)") }
-        }
+//        if let headers = log.responseHeaders, !headers.isEmpty {
+//            print("📥 Response Headers:")
+//            headers.forEach { print("   \($0): \($1)") }
+//        }
 
         if let body = log.responseBody {
             print("📥 Response Body:")
