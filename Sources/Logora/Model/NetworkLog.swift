@@ -14,12 +14,12 @@ public struct NetworkLog: Codable,Sendable {
     // Request
     public let method: String
     public let url: String
-    public let requestHeaders: String?
+    public let requestHeaders: [String: String]?
     public let requestBody: String?
 
     // Response
     public let statusCode: Int?
-    public let responseHeaders: String?
+    public let responseHeaders: [String: String]?
     public let responseBody: String?
 
     // Error
