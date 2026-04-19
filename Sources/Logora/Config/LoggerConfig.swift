@@ -110,7 +110,7 @@ extension LoggerConfig {
         // 🚫 Block ingestion endpoints to prevent recursion
         if let ingestionURL,
            url.host == ingestionURL.host,
-           (url.path == "/logs" || url.path == "/v1/realtime-logs") {
+           (url.path == "/Logs" || url.path == "/v1/realtime-logs") {
             return false
         }
 
