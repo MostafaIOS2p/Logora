@@ -29,7 +29,7 @@ public final class HTTPLogSink: LogSink {
     }
 
     private func sendRealtime(_ logs: [RealtimeLog]) {
-        let url = baseURL.appendingPathComponent("v1/realtime-logs")
+        let url = baseURL.appendingPathComponent("/v1/realtime-logs")
         post(logs, to: url)
     }
 
