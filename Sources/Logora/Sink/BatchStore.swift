@@ -8,30 +8,37 @@
 
 import Foundation
 
-final class BatchStore<T> {
+final class BatchStore<T>: @unchecked Sendable {
     private var items: [T] = []
     private let lock = NSLock()
 
     func append(_ item: T) {
-        lock.lock(); defer { lock.unlock() }
+        lock.lock()
         items.append(item)
+        lock.unlock()
     }
 
-    func drain(max: Int? = nil) -> [T] {
-        lock.lock(); defer { lock.unlock() }
-        if let max, items.count > max {
-            let out = Array(items.prefix(max))
-            items.removeFirst(out.count)
-            return out
-        } else {
-            let out = items
-            items.removeAll(keepingCapacity: true)
-            return out
-        }
+    func append(contentsOf newItems: [T]) {
+        lock.lock()
+        items.append(contentsOf: newItems)
+        lock.unlock()
     }
 
-    var count: Int {
-        lock.lock(); defer { lock.unlock() }
-        return items.count
+    func drain(max: Int) -> [T] {
+        lock.lock()
+        defer { lock.unlock() }
+
+        guard !items.isEmpty else { return [] }
+
+        let count = Swift.min(max, items.count)
+        let out = Array(items.prefix(count))
+        items.removeFirst(count)
+        return out
+    }
+
+    var isEmpty: Bool {
+        lock.lock()
+        defer { lock.unlock() }
+        return items.isEmpty
     }
 }
