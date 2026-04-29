@@ -28,8 +28,8 @@ public final class HTTPLogSink: LogSink, @unchecked Sendable {
     private let flushInterval: TimeInterval = 3
     private let maxRetries = 3
 
-    public init(endpoint: URL, apiKey: String) {
-        self.baseURL = Self.normalizedBaseURL(from: endpoint)
+    public init(baseURL: URL, apiKey: String) {
+        self.baseURL = Self.normalizedBaseURL(from: baseURL)
         self.apiKey = apiKey
 
         let config = URLSessionConfiguration.ephemeral
