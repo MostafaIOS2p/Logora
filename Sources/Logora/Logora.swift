@@ -8,7 +8,6 @@ public enum LogoraLogs {
     public static func start(
         mode: LoggerConfig.Mode = .enabled,
         apiKey: String,
-        loggerType: LoggerConfig.LoggeerType = .http,
         environment: String
     ) {
 
@@ -23,7 +22,6 @@ public enum LogoraLogs {
 
             let config = LoggerConfig(
                 mode: mode,
-                loggeerType: loggerType,
                 ingestionURL: LogoraEndpoints.base,
                 realtimeEndpoint: LogoraEndpoints.base,
                 apiKey: apiKey
@@ -31,7 +29,7 @@ public enum LogoraLogs {
 
             let sink: LogSink
 
-            if mode == .disabled || loggerType == .none {
+            if mode == .disabled{
                 sink = ConsoleLogSink()
             } else {
                 sink = HTTPLogSink(

@@ -11,10 +11,8 @@ import Foundation
 public struct LoggerConfig: Sendable {
 
     public enum Mode: Sendable { case disabled, enabled }
-    public enum LoggeerType: Sendable { case http, realtime ,none}
 
     public let mode: Mode
-    public let loggeerType: LoggeerType
 
     // Bodies
     public let includeBodies: Bool
@@ -37,7 +35,6 @@ public struct LoggerConfig: Sendable {
 
     public init(
         mode: Mode,
-        loggeerType: LoggeerType,
         includeBodies: Bool = true,
         maxBodyBytes: Int = 32_000,
         redactedHeaders: Set<String> = ["authorization", "cookie", "set-cookie"],
@@ -49,7 +46,6 @@ public struct LoggerConfig: Sendable {
         apiKey: String? = nil
     ) {
         self.mode = mode
-        self.loggeerType = loggeerType
         self.includeBodies = includeBodies
         self.maxBodyBytes = maxBodyBytes
         self.redactedHeaders = Set(redactedHeaders.map { $0.lowercased() })
@@ -61,7 +57,7 @@ public struct LoggerConfig: Sendable {
         self.realtimeEndpoint = realtimeEndpoint
     }
 
-    public static let disabled = LoggerConfig(mode: .disabled, loggeerType: .none, includeBodies: false)
+    public static let disabled = LoggerConfig(mode: .disabled, includeBodies: false)
 }
 
 // MARK: - Endpoint rules
