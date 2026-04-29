@@ -24,7 +24,7 @@ public final class HTTPLogSink: LogSink, @unchecked Sendable {
     private let queue = DispatchQueue(label: "Logora.HTTPLogSink.queue")
     private var timer: DispatchSourceTimer?
 
-    private let batchSize = 20
+    private let batchSize = 3
     private let flushInterval: TimeInterval = 3
     private let maxRetries = 3
 
